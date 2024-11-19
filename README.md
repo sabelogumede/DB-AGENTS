@@ -9,7 +9,7 @@
 # install requirements with: 
 <!-- 
 create a .env for your LLM secrete API keys
-pip install -r requirements.txt 
+- pip install -r requirements.txt 
  -->
 
 # run code with: 
@@ -18,3 +18,11 @@ depenind on the agent you trying to test locally run:
 - python3 first_agent.py
 - python3 csv_agent.py 
  -->
+
+#UI
+<!-- 
+we will use Streamlit
+- pip install streamlit or 
+- pip install -r requirements.txt 
+- streamlit run csv_agent.py
+-->

@@ -90,8 +90,33 @@ except anthropic.APIStatusError as e:
 try:
     # Use invoke() instead of run()
     res = agent.invoke({"input": CSV_PROMPT_PREFIX + QUERY + CSV_PROMPT_SUFFIX})
-    print(f"Agent response:, {res["output"]}")
+    # print(f"Agent response:, {res["output"]}")
 except anthropic.APIStatusError as e:
     print("Error running the agent:")
     traceback.print_exc()
     raise
+
+# UI for better data visualisation ---------------------------------------------------------------
+
+import streamlit as st
+
+# create a title
+st.title("Database AI Agent with LangChain")
+
+st.write("### Dataset Preview")
+st.write(df.head())
+
+# User input for Question
+st.write("## Ask a Question")
+question = st.text_input(
+    "Enter your question about the dataset:",
+    "Which grade has the highest avarage base salary, and compare the average female pay vs male pay?"
+)
+
+# Run the agent and display the result
+if st.button("Run Query"):
+    QUERY = CSV_PROMPT_PREFIX + question + CSV_PROMPT_SUFFIX
+    res = agent.invoke(QUERY)
+    st.write("### Final Answer")
+    st.markdown(res["output"])
+    
