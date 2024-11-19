@@ -25,9 +25,26 @@ messages = [
     HumanMessage(content="Could you explain what the capital of South Africa is and provide some context about its significance?")
 ]
 
-# Invoke the model with the messages
-response = model.invoke(messages)
+# Invoke the model with the messages and Print the content of the response
+# response = model.invoke(messages)
+# print("Response from model:", response.content)
 
-# Print the content of the response
-# Assuming 'response' is an AIMessage instance
-print("Response from model:", response.content)
+def first_agent(messages):
+    res = model.invoke(messages)
+    return res
+
+def run_agent():
+    print("Simple AI Agent: Type 'exit' to quit")
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() == "exit":
+            print("Goodbye!")
+            break
+        print("AI Agent is thinking...")
+        messages = [HumanMessage(content=user_input)]
+        response = first_agent(messages)
+        print("AI Agent: getting the response...")
+        print(f"AI Agent: {response.content}")
+
+if __name__ == "__main__":
+    run_agent()
