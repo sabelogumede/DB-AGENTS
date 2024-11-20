@@ -18,7 +18,8 @@ database_agent:
 - interact with SQL Database
 - Transform CSV file into SQL database
 - Langchain
-- 
+- pip install langchain langchain-community python-dotenv pandas sqlalchemy     
+- optional: you can add SQLite externtion to VSCode for better viewing of your db table data.
  -->
 
 # install requirements with: 
@@ -34,10 +35,10 @@ depenind on the agent you trying to test locally run:
 - python3 csv_agent.py 
  -->
 
-#UI
+# UI
 <!-- 
 we will use Streamlit
 - pip install streamlit or 
-- pip install -r requirements.txt 
+- pip install -r requirements.txt (if its alredy included in your requirements.txt)
 - streamlit run csv_agent.py
 -->

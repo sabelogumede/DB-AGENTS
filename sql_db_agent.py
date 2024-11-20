@@ -114,6 +114,23 @@ sql_agent = create_sql_agent(
     verbose=True,
 )
 
-res = sql_agent.invoke(QUESTION)
+# res = sql_agent.invoke(QUESTION)
 
-print(res)
+# print(res)
+
+# ---------- import streamlit for UI ---------------- 
+import streamlit as st
+
+st.title("ZuluAI")
+st.header("SQL Query AI Agent")
+
+question = st.text_input("Enter your query:")
+
+if st.button("Run Query"):
+    if question:
+        res = sql_agent.invoke(question)
+        # st.markdown("# Intermediate Steps")
+
+        st.markdown(res["output"])
+else:
+    st.error("Please enter a query.")
